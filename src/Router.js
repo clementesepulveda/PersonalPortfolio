@@ -1,32 +1,44 @@
 import {
     createBrowserRouter,
     RouterProvider,
-  } from "react-router-dom"
+} from "react-router-dom"
 
-  import Home from "./pages/Home";
-  import Boids from "./pages/Boids";
+import Layout from "./Layout";
+import Home from "./pages/Home";
 import NotFound from "./pages/notFound";
-  
-  function Router() {
+import Boids from "./pages/boids/Boids";
+import Abstract from "./pages/Abstract";
+
+function Router() {
     // initialize a browser router
-    const router = createBrowserRouter([
+    const router = createBrowserRouter([{
+        element: <Layout />,
+        errorElement: <NotFound />,
+        children: [
+            
         {
-          path: "/",
-          element: <Home />,
+            path: "/",
+            element: <Home />,
         },
         {
-          path: "/boids",
-          element: <Boids />,
+            path: "/boids",
+            element: <Boids />,
         },
         {
-          path: "*",
-          element: <NotFound />,
+            path: "/abstract",
+            element: <Abstract />,
         },
+        {
+            path: "*",
+            element: <NotFound />,
+        },
+        ]
+    }
     ])
-  
+
     return (
         <RouterProvider router={router} />
     )
-  }
-  
-  export default Router
+}
+
+export default Router
