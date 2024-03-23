@@ -6,8 +6,8 @@ function App() {
   const height = 500;
   const minDistance = 50
   const maxDistance = 180
-  const minVel = 2
-  const maxVel = 3
+  const minVel = 0.8
+  const maxVel = 2
 
   const canvasRef = useRef(null);
   let mousePos = [0, 0];
@@ -19,8 +19,8 @@ function App() {
     circles.push([
       Math.floor(Math.random() * width),
       Math.floor(Math.random() * height),
-      (-1)**(Math.floor(Math.random()*2+1)) * Math.floor(Math.random() * maxVel) + minVel,
-      (-1)**(Math.floor(Math.random()*2+1)) * Math.floor(Math.random() * maxVel) + minVel,
+      (-1)**(Math.floor(Math.random()*2+1)) * (Math.floor(Math.random() * maxVel) + minVel),
+      (-1)**(Math.floor(Math.random()*2+1)) * (Math.floor(Math.random() * maxVel) + minVel),
     ])
   }
 
