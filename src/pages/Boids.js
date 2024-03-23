@@ -1,7 +1,7 @@
-import './App.css';
+// import './App.css';
 import React, { useRef, useEffect } from 'react'
-import { visualRange, protectedRange, boidSize, avoidfactor, minSpeed, maxSpeed, matchingfactor, centeringFactor } from './boidConst.js'
-import { Boid } from './boid.js'
+import { visualRange, protectedRange, boidSize, avoidfactor, minSpeed, maxSpeed, matchingfactor, centeringFactor } from '../boidConst.js'
+import { Boid } from '../boid.js'
 
 function App() {
   const width = 1000;
