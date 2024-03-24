@@ -42,6 +42,9 @@ function App() {
 
   function moveBoids() {
     boids.forEach(boid => {
+      const lastVx = boid.vx;
+      const lastVy = boid.vy;
+
       boidSeparation(boid)
       boidAlignment(boid)
       boidCohesion(boid)
@@ -57,13 +60,12 @@ function App() {
         boid.vy = (boid.vy / speed) * maxSpeed
       }
 
-      boid.x = boid.x + boid.vx
+      console.log(boid.vx, lastVx)
+      boid.x = boid.x + (boid.vx + lastVx) / 2 * 0.5
+      boid.y = boid.y + (boid.vy + lastVy) / 2 * 0.5
+      
       boid.x = ((boid.x % width) + width) % width;
-
-      boid.y = boid.y + boid.vy
       boid.y = ((boid.y % height) + height) % height;
-
-      // boid.y = (boid.y + boid.vy) % height)
     })
   }
 
@@ -154,10 +156,10 @@ function App() {
       ctx.fill();
       ctx.stroke();
 
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x + boid.vx * 7, y + boid.vy * 7);
-      ctx.stroke();
+      // ctx.beginPath();
+      // ctx.moveTo(x, y);
+      // ctx.lineTo(x + boid.vx * 7, y + boid.vy * 7);
+      // ctx.stroke();
     })
   }
 
