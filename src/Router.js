@@ -5,6 +5,7 @@ import {
 
 import Layout from "./Layout";
 import Home from "./pages/Home";
+import Projects from "./pages/Projects";
 import NotFound from "./pages/notFound";
 import Boids from "./pages/boids/Boids";
 import Abstract from "./pages/Abstract";
@@ -19,6 +20,10 @@ function Router() {
         {
             path: "/",
             element: <Home />,
+        },
+        {
+            path: "/projects",
+            element: <Projects />,
         },
         {
             path: "/boids",
