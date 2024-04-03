@@ -7,6 +7,7 @@ import Layout from "./Layout";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/notFound";
+import Admin from "./pages/Admin";
 import Boids from "./pages/boids/Boids";
 import Abstract from "./pages/Abstract";
 
@@ -32,6 +33,10 @@ function Router() {
         {
             path: "/abstract",
             element: <Abstract />,
+        },
+        {
+            path: "/admin",
+            element: <Admin />,
         },
         {
             path: "*",
