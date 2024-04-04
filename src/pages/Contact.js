@@ -1,7 +1,4 @@
-// import './App.css';
-
-function Home() {
-
+function Contact() {
 
     return (
       <div className="App">
@@ -10,5 +7,5 @@ function Home() {
     );
   }
   
-  export default Home;
+  export default Contact;
   

@@ -10,6 +10,7 @@ import NotFound from "./pages/notFound";
 import Admin from "./pages/Admin";
 import Boids from "./pages/boids/Boids";
 import Abstract from "./pages/Abstract";
+import Contact from "./pages/Contact";
 
 function Router() {
     // initialize a browser router
@@ -25,6 +26,10 @@ function Router() {
         {
             path: "/projects",
             element: <Projects />,
+        },
+        {
+            path: "/contact",
+            element: <Contact />,
         },
         {
             path: "/boids",
