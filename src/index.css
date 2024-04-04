@@ -1,13 +1,9 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  /* transition: */
-    /* background-color 0.1s ease-in-out, */
-    /* color 0.1s ease-in-out; */
-  @apply bg-white dark:bg-slate-900 text-black dark:text-white;
+  @apply bg-white dark:bg-slate-900 text-black dark:text-white bg-gradient-to-b from-slate-600 bg-no-repeat;
 }
 
 body {
