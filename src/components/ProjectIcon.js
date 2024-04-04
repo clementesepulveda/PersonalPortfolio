@@ -2,7 +2,7 @@
 function ProjectIcon({ data }) {
     return (
         <a href={data['link']}
-            className="bg-slate-700 w-80 h-96 rounded-xl overflow-hidden shadow-2xl bg-opacity-50"
+            className="bg-slate-100 dark:bg-slate-700 w-80 h-96 rounded-xl overflow-hidden shadow-2xl bg-opacity-50"
         >
             <div className="relative w-full h-48 overflow-hidden">
                 <img className="absolute inset-0 w-full h-full object-cover"

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white dark:bg-slate-900 text-black dark:text-white bg-gradient-to-b from-slate-700 bg-no-repeat;
+  @apply bg-white text-black dark:bg-slate-900 dark:text-white dark:bg-gradient-to-b from-slate-700 bg-no-repeat;
 }
 
 body {
