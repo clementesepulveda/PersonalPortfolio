@@ -12,45 +12,52 @@ function Projects() {
         {
             id: "id",
             title: "Don't Fall",
-            description: "2D platformer",
+            description: "2D platformer made with Unity for a JTA Game Jam #6.",
             link: "https://clementesepulveda.itch.io/dont-fall",
             image: "https://img.itch.zone/aW1nLzExMTA5ODU5LnBuZw==/315x250%23c/RxtHVm.png"
         },
         {
             id: "id",
             title: "Keepie Uppie",
-            description: "This is a very long description. I am just testing something. do not worry about it. I will maybe fix it Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            description: "Simple game about keeping a ball up in the air with your head. Play on the browser or download the apk.",
             link: "https://clementesepulveda.itch.io/keepie-uppie",
             image: "https://img.itch.zone/aW1nLzEwOTY3NzcwLnBuZw==/315x250%23c/xUgn9c.png"
         },
         {
             id: "id",
             title: "Wordle Clone",
-            description: "Small Description",
+            description: "Don't want to wait a whole day for a new Wordle word? This one generates a new word every time you refresh the page.",
             link: "https://clementesepulveda.github.io/wordle-clone/",
             image: "https://res.cloudinary.com/clegowi/image/upload/v1712194103/My-Website/Screenshot_2024-04-03_222749_bcnirb.png"
         },
         {
             id: "id",
             title: "Sierpinski Triangle Simulator",
-            description: "Small Description",
+            description: "Generate a Sierpinski Triangle with a very weird property",
             link: "https://clementesepulveda.itch.io/sierpinski-triangle-simulator",
             image: "https://img.itch.zone/aW1nLzEwODc3OTc0LnBuZw==/315x250%23c/KviNH2.png"
         },
         {
             id: "id",
             title: "Pacman Clone",
-            description: "Small Description",
+            description: "Two player version of Pacman made with HTML. Each player has ability to shoot the other one",
             link: "https://github.com/clementesepulveda/reactivepacman.github.io",
             image: "https://res.cloudinary.com/clegowi/image/upload/v1712194299/My-Website/Screenshot_2024-04-03_223113_wvrnz5.png"
         },
-        // {
-        //     id: "id",
-        //     title: "Portafolio",
-        //     description: "Website showing cool projects",
-        //     link: "http://localhost:3000/",
-        //     image: "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
-        // },
+        {
+            id: "id",
+            title: "Heroes Falsos: Una Historia Interactiva",
+            description: "Choose your own adventure game for Discord. Deprecated since changed with Heroku.",
+            link: "https://github.com/clementesepulveda/DiscordBot",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ZCDSDO2kBhIDA1e8gIdPwJEcTvzziPXnd66OaGdkGQ&s"
+        },
+        {
+            id: "id",
+            title: "Portafolio",
+            description: "Website showing cool projects",
+            link: "",
+            image: "https://res.cloudinary.com/clegowi/image/upload/v1712248265/My-Website/Screenshot_2024-04-04_133005_yfl0gh.png"
+        },
     ]
     return (
         <div className="grid place-items-center gap-10 p-4 grid-auto-columns-1/2 py-10
