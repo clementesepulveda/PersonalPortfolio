@@ -32,6 +32,13 @@ function Projects() {
         },
         {
             id: "id",
+            title: "Snake Clone",
+            description: "Simple HTML version of the classic game Snake. Made with React.",
+            link: "https://clementesepulveda.github.io/snake-clone/",
+            image: "https://cdn-icons-png.flaticon.com/512/528/528105.png"
+        },
+        {
+            id: "id",
             title: "Sierpinski Triangle Simulator",
             description: "Generate a Sierpinski Triangle with a very weird property",
             link: "https://clementesepulveda.itch.io/sierpinski-triangle-simulator",
@@ -54,7 +61,7 @@ function Projects() {
         {
             id: "id",
             title: "Portafolio",
-            description: "Website showing cool projects",
+            description: "Website showing cool projects. Click here for a nice example of recursion.",
             link: "",
             image: "https://res.cloudinary.com/clegowi/image/upload/v1712248265/My-Website/Screenshot_2024-04-04_133005_yfl0gh.png"
         },
