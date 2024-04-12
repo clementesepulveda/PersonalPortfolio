@@ -9,6 +9,7 @@ export default function Header() {
                 <div>
                     <a className="p-4" href="/about">About</a>
                     <a className="p-4" href="/projects">Projects</a>
+                    <a className="p-4" href="/blog">Blog</a>
                     <a className="p-4" href="/contact">Contact</a>
                 </div>
                 
