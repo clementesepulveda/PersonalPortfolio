@@ -12,8 +12,9 @@ function Projects() {
         const snapshot = await get(dbRef);
 
         if (snapshot.exists()) {
-            setProjects(Object.values(snapshot.val()));
-            console.log(Object.keys(snapshot.val()))
+            let projectsData = Object.values(snapshot.val());
+            projectsData = projectsData.sort((a, b) => a.order < b.order ? 1 : -1);
+            setProjects(projectsData);
         }
     }
 

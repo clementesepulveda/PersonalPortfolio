@@ -13,6 +13,7 @@ import Abstract from "./pages/Abstract";
 import Contact from "./pages/Contact";
 import LogIn from "./pages/admin/LogIn";
 import { AuthProvider } from "./contexts/AuthContext";
+import CreateProject from "./pages/admin/CreateProject";
 
 function Router() {
 
@@ -30,6 +31,7 @@ function Router() {
 
                         <Route path='/admin' Component={LogIn}></Route>
                         <Route path='/adminLogin' Component={LogIn}></Route>
+                        <Route path='/admin/create-project' Component={CreateProject}></Route>
                         {/* add a project */}
                         {/* update a project */}
                         {/* delete a project */}
