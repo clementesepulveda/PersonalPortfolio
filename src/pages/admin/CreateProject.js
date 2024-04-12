@@ -49,7 +49,7 @@ export default function CreateProject() {
                         <label>Description</label>
                         <input type="text" ref={descriptionRef} className="text-black my-2 rounded border p-1" required />
                         <label>Link</label>
-                        <input type="text" ref={linkRef} className="text-black my-2 rounded border p-1" required />
+                        <input type="text" ref={linkRef} className="text-black my-2 rounded border p-1" />
                         <label>Image</label>
                         <input type="text" ref={imageRef} className="text-black mt-2 rounded border p-1" required />
 

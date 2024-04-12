@@ -14,6 +14,9 @@ import Contact from "./pages/Contact";
 import LogIn from "./pages/admin/LogIn";
 import { AuthProvider } from "./contexts/AuthContext";
 import CreateProject from "./pages/admin/CreateProject";
+import UpdateProject from "./pages/admin/UpdateProject";
+import AdminProjects from "./pages/admin/AdminProjects";
+import Admin from "./pages/admin/Admin";
 
 function Router() {
 
@@ -29,12 +32,11 @@ function Router() {
                         <Route path='/abstract' Component={Abstract}></Route>
                         <Route path='/boids' Component={Boids}></Route>
 
-                        <Route path='/admin' Component={LogIn}></Route>
-                        <Route path='/adminLogin' Component={LogIn}></Route>
+                        <Route path='/admin' Component={Admin}></Route>
+                        <Route path='/admin/login' Component={LogIn}></Route>
+                        <Route path='/admin/projects' Component={AdminProjects}></Route>
                         <Route path='/admin/create-project' Component={CreateProject}></Route>
-                        {/* add a project */}
-                        {/* update a project */}
-                        {/* delete a project */}
+                        <Route path='/admin/projects/:id' Component={UpdateProject}></Route>
                         {/* add a blog */}
                         {/* update a blog */}
                         {/* delete a blog */}

@@ -8,7 +8,7 @@ export default function LogIn() {
 
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { login, currentUser } = useAuth()
+  const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -19,7 +19,7 @@ export default function LogIn() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      navigate("/")
+      navigate("/admin")
     } catch {
       setError("Failed to log in")
     }
