@@ -1,17 +1,38 @@
 import { get, getDatabase, ref, update, remove } from 'firebase/database'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import app from '../../firebase'
 import { useParams, useNavigate } from "react-router-dom"
+import CloudinaryUploadWidget from '../../components/CloudinaryUploadWidget';
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage } from '@cloudinary/react';
 
 export default function UpdateProject() {
+    // CLOUDINARY
+    const [imageData, setImageData] = useState({ secure_url: "" });
+
+    const [uwConfig] = useState({
+        cloudName: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
+        uploadPreset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET,
+        multiple: false,  //restrict upload to a single file
+        folder: "My-Website", //upload files to the specified folder
+        clientAllowedFormats: ["jpg", "png"], //restrict uploading to image files only
+    });
+
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME
+        }
+    });
+
+    const myImage = cld.image(imageData.public_id);
+    ////////
+    
     const { id } = useParams();
     const navigate = useNavigate();
 
     const titleRef = useRef()
     const descriptionRef = useRef()
     const linkRef = useRef()
-    const imageRef = useRef()
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,7 +46,7 @@ export default function UpdateProject() {
                 titleRef.current.value = projectData['title']
                 descriptionRef.current.value = projectData['description']
                 linkRef.current.value = projectData['link']
-                imageRef.current.value = projectData['image']
+                await setImageData({secure_url: projectData['image']})
             }
         }
         
@@ -42,7 +63,7 @@ export default function UpdateProject() {
             title: titleRef.current.value,
             description: descriptionRef.current.value,
             link: linkRef.current.value,
-            image: imageRef.current.value,
+            image: imageData.secure_url,
         }
 
         update(ref(db), updates).then(() => {
@@ -60,7 +81,7 @@ export default function UpdateProject() {
         try {
             await remove(ref(db, `projects/${id}`));
             alert('Deleted successfully.');
-            navigate("/projects")
+            navigate("/admin/projects")
         } catch (error) {
             alert(`Error: ${error.message}`);
         }
@@ -81,7 +102,8 @@ export default function UpdateProject() {
                         <label>Link</label>
                         <input type="text" ref={linkRef} className="text-black my-2 rounded border p-1" />
                         <label>Image</label>
-                        <input type="text" ref={imageRef} className="text-black mt-2 rounded border p-1" required />
+                        <CloudinaryUploadWidget uwConfig={uwConfig} setImageData={setImageData} />
+                        <img className='m-4 size-48' src={imageData.secure_url} />
 
                         <button className="bg-slate-800 text-white w-full rounded p-2 mt-8" type="submit">
                             Update

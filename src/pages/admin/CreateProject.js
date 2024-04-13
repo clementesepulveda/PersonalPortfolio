@@ -1,15 +1,37 @@
 import { getDatabase, push, ref, set } from 'firebase/database'
 import React, { useRef, useState } from 'react'
 import app from '../../firebase'
-import { useNavigate  } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import CloudinaryUploadWidget from '../../components/CloudinaryUploadWidget';
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage } from '@cloudinary/react';
 
 export default function CreateProject() {
+    // CLOUDINARY
+    const [imageData, setImageData] = useState({ public_id: "" });
+
+    const [uwConfig] = useState({
+        cloudName: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
+        uploadPreset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET,
+        multiple: false,  //restrict upload to a single file
+        folder: "My-Website", //upload files to the specified folder
+        clientAllowedFormats: ["jpg", "png"], //restrict uploading to image files only
+    });
+
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME
+        }
+    });
+
+    const myImage = cld.image(imageData.public_id);
+    ////////
+
     const navigate = useNavigate();
 
     const titleRef = useRef()
     const descriptionRef = useRef()
     const linkRef = useRef()
-    const imageRef = useRef()
 
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
@@ -24,11 +46,11 @@ export default function CreateProject() {
             title: titleRef.current.value,
             description: descriptionRef.current.value,
             link: linkRef.current.value,
-            image: imageRef.current.value,
+            image: imageData.secure_url,
             order: 0,
         }).then(() => {
             alert('Created successfully.')
-            navigate("/projects")
+            navigate("/admin/projects")
         }).catch((error) => {
             alert(`Error: ${error.message}`)
         })
@@ -51,10 +73,11 @@ export default function CreateProject() {
                         <label>Link</label>
                         <input type="text" ref={linkRef} className="text-black my-2 rounded border p-1" />
                         <label>Image</label>
-                        <input type="text" ref={imageRef} className="text-black mt-2 rounded border p-1" required />
+                        <CloudinaryUploadWidget uwConfig={uwConfig} setImageData={setImageData} />
+                        <AdvancedImage cldImg={myImage} className="size-64 pt-4"/>
 
                         <button disabled={loading} className="bg-slate-800 text-white w-full rounded p-2 mt-8" type="submit">
-                            Create
+                            Create Project
                         </button>
                     </form>
                 </div>
