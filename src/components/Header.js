@@ -10,7 +10,6 @@ export default function Header() {
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const toggleHamburger = () => {
         setHamburgerOpen(!hamburgerOpen);
-        console.log('h')
     }
 
     return (

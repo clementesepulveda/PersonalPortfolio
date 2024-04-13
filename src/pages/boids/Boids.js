@@ -60,7 +60,6 @@ function App() {
         boid.vy = (boid.vy / speed) * maxSpeed
       }
 
-      console.log(boid.vx, lastVx)
       boid.x = boid.x + (boid.vx + lastVx) / 2 * 0.5
       boid.y = boid.y + (boid.vy + lastVy) / 2 * 0.5
       
