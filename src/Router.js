@@ -17,6 +17,7 @@ import CreateProject from "./pages/admin/CreateProject";
 import UpdateProject from "./pages/admin/UpdateProject";
 import AdminProjects from "./pages/admin/AdminProjects";
 import Admin from "./pages/admin/Admin";
+import { AdminProtected } from "./hooks/protected";
 
 function Router() {
 
@@ -32,11 +33,29 @@ function Router() {
                         <Route path='/abstract' Component={Abstract}></Route>
                         <Route path='/boids' Component={Boids}></Route>
 
-                        <Route path='/admin' Component={Admin}></Route>
-                        <Route path='/admin/login' Component={LogIn}></Route>
-                        <Route path='/admin/projects' Component={AdminProjects}></Route>
-                        <Route path='/admin/create-project' Component={CreateProject}></Route>
-                        <Route path='/admin/projects/:id' Component={UpdateProject}></Route>
+                        <Route path='/admin/login' element={
+                            <LogIn />
+                        }></Route>
+                        <Route path='/admin' element={
+                            <AdminProtected>
+                                <Admin />
+                            </AdminProtected>
+                        }></Route>
+                        <Route path='/admin/projects' element={
+                            <AdminProtected>
+                                <AdminProjects />
+                            </AdminProtected>
+                        }></Route>
+                        <Route path='/admin/create-project' element={
+                            <AdminProtected>
+                                <CreateProject />
+                            </AdminProtected>
+                        }></Route>
+                        <Route path='/admin/projects/:id' element={
+                            <AdminProtected>
+                                <UpdateProject />
+                            </AdminProtected>
+                        }></Route>
                         {/* add a blog */}
                         {/* update a blog */}
                         {/* delete a blog */}
