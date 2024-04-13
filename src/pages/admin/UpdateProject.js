@@ -1,10 +1,11 @@
 import { get, getDatabase, ref, update, remove } from 'firebase/database'
 import React, { useRef, useEffect } from 'react'
 import app from '../../firebase'
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 export default function UpdateProject() {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const titleRef = useRef()
     const descriptionRef = useRef()
@@ -59,6 +60,7 @@ export default function UpdateProject() {
         try {
             await remove(ref(db, `projects/${id}`));
             alert('Deleted successfully.');
+            navigate("/projects")
         } catch (error) {
             alert(`Error: ${error.message}`);
         }

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-function Admin({ data }) {
+function Admin() {
 
     return (
         <div>
-            <Link to='/admin/login' className='p-4'>Log in</Link>
             <Link to='/admin/projects' className='p-4'>Projects</Link>
+            <Link to='/admin/create-project' className='p-4'>create project</Link>
         </div>
     );
 }
