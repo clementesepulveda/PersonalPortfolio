@@ -9,7 +9,7 @@ function Admin() {
             </div>
 
             <div className="bg-slate-500 text-white rounded p-2 mt-8 w-fit text-center shadow-2xl">
-                <Link to='/admin/projects/create' className='p-4'>reate project</Link>
+                <Link to='/admin/projects/create' className='p-4'>Create project</Link>
             </div>
 
         </div>
