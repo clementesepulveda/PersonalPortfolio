@@ -34,7 +34,7 @@ export default function UpdateProject() {
 
             if (snapshot.exists()) {
                 let projectData = snapshot.val();
-
+                
                 titleRef.current.value = projectData['title']
                 descriptionRef.current.value = projectData['description']
                 linkRef.current.value = projectData['link']
