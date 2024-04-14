@@ -1,7 +1,7 @@
 import { getDatabase, push, ref, set } from 'firebase/database'
 import React, { useRef, useState } from 'react'
 import app from '../../firebase'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import CloudinaryUploadWidget from '../../components/CloudinaryUploadWidget';
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage } from '@cloudinary/react';
@@ -74,12 +74,23 @@ export default function CreateProject() {
                         <input type="text" ref={linkRef} className="text-black my-2 rounded border p-1" />
                         <label>Image</label>
                         <CloudinaryUploadWidget uwConfig={uwConfig} setImageData={setImageData} />
-                        <AdvancedImage cldImg={myImage} className="size-64 pt-4"/>
+                        <AdvancedImage cldImg={myImage} className="size-64 pt-4" />
 
                         <button disabled={loading} className="bg-slate-800 text-white w-full rounded p-2 mt-8" type="submit">
                             Create Project
                         </button>
                     </form>
+
+                    <button disabled={loading} className="bg-slate-800 text-white w-full rounded p-2 mt-8" type="submit">
+                        <Link
+                            to={'..'}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                navigate(-1);
+                            }}
+                            className='p-4'>Back
+                        </Link>
+                    </button>
                 </div>
             </div>
         </>

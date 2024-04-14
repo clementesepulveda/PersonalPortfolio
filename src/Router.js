@@ -46,7 +46,7 @@ function Router() {
                                 <AdminProjects />
                             </AdminProtected>
                         }></Route>
-                        <Route path='/admin/create-project' element={
+                        <Route path='/admin/projects/create' element={
                             <AdminProtected>
                                 <CreateProject />
                             </AdminProtected>

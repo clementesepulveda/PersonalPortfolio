@@ -1,10 +1,8 @@
 import { get, getDatabase, ref, update, remove } from 'firebase/database'
 import React, { useRef, useEffect, useState } from 'react'
 import app from '../../firebase'
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import CloudinaryUploadWidget from '../../components/CloudinaryUploadWidget';
-import { Cloudinary } from "@cloudinary/url-gen";
-import { AdvancedImage } from '@cloudinary/react';
 
 export default function UpdateProject() {
     // CLOUDINARY
@@ -18,15 +16,8 @@ export default function UpdateProject() {
         clientAllowedFormats: ["jpg", "png"], //restrict uploading to image files only
     });
 
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME
-        }
-    });
-
-    const myImage = cld.image(imageData.public_id);
     ////////
-    
+
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -39,17 +30,17 @@ export default function UpdateProject() {
             const db = getDatabase(app)
             const dbRef = ref(db, `projects/${id}`);
             const snapshot = await get(dbRef);
-    
+
             if (snapshot.exists()) {
                 let projectData = snapshot.val();
-    
+
                 titleRef.current.value = projectData['title']
                 descriptionRef.current.value = projectData['description']
                 linkRef.current.value = projectData['link']
-                await setImageData({secure_url: projectData['image']})
+                await setImageData({ secure_url: projectData['image'] })
             }
         }
-        
+
         fetchData();
     }, [id]);
 
@@ -103,7 +94,7 @@ export default function UpdateProject() {
                         <input type="text" ref={linkRef} className="text-black my-2 rounded border p-1" />
                         <label>Image</label>
                         <CloudinaryUploadWidget uwConfig={uwConfig} setImageData={setImageData} />
-                        <img className='m-4 size-48' src={imageData.secure_url} />
+                        <img src={imageData.secure_url} alt="Project preview" className='m-4 size-48'/>
 
                         <button className="bg-slate-800 text-white w-full rounded p-2 mt-8" type="submit">
                             Update
@@ -111,6 +102,16 @@ export default function UpdateProject() {
                     </form>
                     <button onClick={handleDelete} className="bg-red-700 text-white w-full rounded p-2 mt-8" type="submit">
                         Delete
+                    </button>
+                    <button className="bg-slate-800 text-white w-full rounded p-2 mt-8" type="submit">
+                        <Link
+                            to={'..'}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                navigate(-1);
+                            }}
+                            className='p-4'>Back
+                        </Link>
                     </button>
                 </div>
             </div>
