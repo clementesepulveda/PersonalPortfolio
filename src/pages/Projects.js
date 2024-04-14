@@ -13,7 +13,7 @@ function Projects() {
 
         if (snapshot.exists()) {
             let projectsData = Object.values(snapshot.val());
-            projectsData = projectsData.sort((a, b) => a.order < b.order ? 1 : -1);
+            projectsData = projectsData.sort((a, b) => a.order > b.order ? 1 : -1);
             setProjects(projectsData);
         }
     }

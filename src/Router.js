@@ -18,6 +18,7 @@ import UpdateProject from "./pages/admin/UpdateProject";
 import AdminProjects from "./pages/admin/AdminProjects";
 import Admin from "./pages/admin/Admin";
 import { AdminProtected } from "./hooks/protected";
+import OrganizeProjects from "./pages/admin/OrganizeProjects";
 
 function Router() {
 
@@ -54,6 +55,11 @@ function Router() {
                         <Route path='/admin/projects/:id' element={
                             <AdminProtected>
                                 <UpdateProject />
+                            </AdminProtected>
+                        }></Route>
+                        <Route path='/admin/projects/organize' element={
+                            <AdminProtected>
+                                <OrganizeProjects />
                             </AdminProtected>
                         }></Route>
                         {/* add a blog */}

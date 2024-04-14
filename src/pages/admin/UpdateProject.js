@@ -24,6 +24,7 @@ export default function UpdateProject() {
     const titleRef = useRef()
     const descriptionRef = useRef()
     const linkRef = useRef()
+    const [projectOrder, setProjectOrder] = useState()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,6 +39,7 @@ export default function UpdateProject() {
                 descriptionRef.current.value = projectData['description']
                 linkRef.current.value = projectData['link']
                 await setImageData({ secure_url: projectData['image'] })
+                setProjectOrder(projectData['order'])
             }
         }
 
@@ -55,6 +57,7 @@ export default function UpdateProject() {
             description: descriptionRef.current.value,
             link: linkRef.current.value,
             image: imageData.secure_url,
+            order: projectOrder,
         }
 
         update(ref(db), updates).then(() => {
