@@ -109,8 +109,6 @@ export default function OrganizeProjects() {
                 Update
             </button>
 
-            {/* grid place-items-start place-content-start gap-y-10 p-2 py-10 grid-cols-3 */}
-
             <div className="gap-4">
                 {projects.map(function (object, i) {
                     return (
