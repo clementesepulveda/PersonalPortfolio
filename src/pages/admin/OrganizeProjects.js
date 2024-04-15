@@ -47,7 +47,6 @@ export default function OrganizeProjects() {
         tempProjects[index + 1].order = index + 2;
 
         setProjects(tempProjects);
-        console.log(tempProjects);
     }
 
     const moveUp = (itemPos) => {
@@ -67,7 +66,6 @@ export default function OrganizeProjects() {
         tempProjects[index - 1].order = index;
 
         setProjects(tempProjects);
-        console.log(tempProjects);
     }
 
     useEffect(() => {
@@ -86,7 +84,6 @@ export default function OrganizeProjects() {
 
                 });
 
-                console.log(projectsData)
                 setProjects(projectsData);
             }
         }
@@ -112,17 +109,27 @@ export default function OrganizeProjects() {
                 Update
             </button>
 
-            <div className="grid place-items-start place-content-start gap-y-10 p-2 py-10 grid-cols-3">
+            {/* grid place-items-start place-content-start gap-y-10 p-2 py-10 grid-cols-3 */}
+
+            <div className="gap-4">
                 {projects.map(function (object, i) {
                     return (
-                        <React.Fragment key={i}>
-                        <div className='flex items-center'>
-                                <button onClick={() => moveUp(object.order)} className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white mr-1'>&#x2191;</button>
-                                <button onClick={() => moveDown(object.order)} className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white'>&#x2193;</button>
+                        <div key={i} className="flex my-4">
+                            <div className='flex items-center'>
+                                <button
+                                    onClick={() => moveUp(object.order)}
+                                    className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white ml-1 mx-1 sm:ml-4 md:ml-10'>
+                                    &#x2191;
+                                </button>
+                                <button
+                                    onClick={() => moveDown(object.order)}
+                                    className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white'>
+                                    &#x2193;
+                                </button>
                             </div>
-                            <img src={object.image} alt="project preview" className='size-16 ml-6 object-cover rounded'/>
-                            <div className=''>{object.order}: {object.title}</div>
-                        </React.Fragment>
+                            <img src={object.image} alt="project preview" className='size-16 mx-5 object-cover rounded' />
+                            <div className=''>{object.title}</div>
+                        </div>
                     );
                 })}
             </div>
