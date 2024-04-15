@@ -116,17 +116,19 @@ export default function OrganizeProjects() {
                             <div className='flex items-center'>
                                 <button
                                     onClick={() => moveUp(object.order)}
-                                    className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white ml-1 mx-1 sm:ml-4 md:ml-10'>
+                                    className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white ml-1 mx-1 
+                                        sm:ml-4 
+                                        md:ml-10 md:size-24'>
                                     &#x2191;
                                 </button>
                                 <button
                                     onClick={() => moveDown(object.order)}
-                                    className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white'>
+                                    className='size-16 rounded text-5xl bg-slate-800 dark:bg-slate-500 text-white md:ml-10 md:size-24'>
                                     &#x2193;
                                 </button>
                             </div>
-                            <img src={object.image} alt="project preview" className='size-16 mx-5 object-cover rounded' />
-                            <div className=''>{object.title}</div>
+                            <img src={object.image} alt="project preview" className='size-16 mx-5 object-cover rounded md:size-24' />
+                            <div className='md:text-2xl'>{object.title}</div>
                         </div>
                     );
                 })}
