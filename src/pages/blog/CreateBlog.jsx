@@ -8,8 +8,9 @@ import {
 } from "@material-tailwind/react";
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import toast from 'react-hot-toast';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-// import { fireDb, storage } from '../../../firebase/FirebaseConfig'; // TODO
+import { getDownloadURL, getStorage, ref as refStorage, uploadBytes } from 'firebase/storage';
+import app, { storage } from '../../firebase';
+import { getDatabase, push, ref, set } from 'firebase/database'
 
 
 function CreateBlog() {
@@ -28,39 +29,69 @@ function CreateBlog() {
 
     //* Add Post Function 
     const addPost = async () => {
+        console.log('5')
         if (blogs.title === "" || blogs.category === "" || blogs.content === "" || blogs.thumbnail === "") {
+            console.log('4')
             toast.error('Please Fill All Fields');
         }
+        console.log('6')
         uploadImage()
     }
 
     //* Upload Image Function 
     const uploadImage = () => {
         if (!thumbnail) return;
+        // const storage = getStorage(app);
 
-        // const imageRef = ref(storage, `blogimage/${thumbnail.name}`); // TODO
-        const imageRef = null;
+        console.log('1', storage, thumbnail)
+
+        const imageRef = refStorage(storage, `blogimage/${thumbnail.name}`);
+
+
+        console.log('1', imageRef, thumbnail)
         uploadBytes(imageRef, thumbnail).then((snapshot) => {
+            console.log('2')
             getDownloadURL(snapshot.ref).then((url) => {
-                // const productRef = collection(fireDb, "blogPost")  // TODO
-                const productRef = null;
-                try {
-                    addDoc(productRef, {
-                        blogs,
-                        thumbnail: url,
-                        time: Timestamp.now(),
-                        date: new Date().toLocaleString(
-                            "en-US",
-                            {
-                                month: "short",
-                                day: "2-digit",
-                                year: "numeric",
-                            }
-                        )
-                    })
-                    navigate('/dashboard')
-                    toast.success('Post Added Successfully');
+                console.log('3')
 
+                const db = getDatabase(app);
+                const newDocRef = push(ref(db, 'blogs'));
+
+                set(newDocRef, {
+                    blogs,
+                    thumbnail: url,
+                    time: Timestamp.now(),
+                    date: new Date().toLocaleString(
+                        "en-US",
+                        {
+                            month: "short",
+                            day: "2-digit",
+                            year: "numeric",
+                        }
+                    )
+                }).then(() => {
+                    alert('Created successfully.')
+                    toast.success('Post Added Successfully');
+                }).catch((error) => {
+                    alert(`Error: ${error.message}`)
+                })
+
+                try {
+                    // addDoc(productRef, {
+                    //     blogs,
+                    //     thumbnail: url,
+                    //     time: Timestamp.now(),
+                    //     date: new Date().toLocaleString(
+                    //         "en-US",
+                    //         {
+                    //             month: "short",
+                    //             day: "2-digit",
+                    //             year: "numeric",
+                    //         }
+                    //     )
+                    // })
+                    // navigate('/dashboard')
+                    // toast.success('Post Added Successfully');
 
                 } catch (error) {
                     toast.error(error)
@@ -179,7 +210,7 @@ function CreateBlog() {
                         settext(editor.getContent({ format: 'text' }));
                     }}
                     init={{
-                        plugins: 'a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions mergetags nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents template  tinydrive tinymcespellchecker typography visualblocks visualchars wordcount'
+                        plugins: 'a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents tinydrive tinymcespellchecker typography visualblocks visualchars wordcount'
                     }}
                 />
 
