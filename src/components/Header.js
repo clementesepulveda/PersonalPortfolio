@@ -22,7 +22,7 @@ export default function Header() {
 
             {hamburgerOpen ?
                 <div className='bg-white bg-opacity-20 dark:bg-slate-900 dark:bg-opacity-50 z-50 grid fixed w-screen backdrop-filter backdrop-blur-sm'>
-                    <Link onClick={handleClickLink} to='/home' className='p-4 hover:underline'>Home</Link>
+                    <Link onClick={handleClickLink} to='/' className='p-4 hover:underline'>Home</Link>
                     <Link onClick={handleClickLink} to='/projects' className='p-4 hover:underline'>Projects</Link>
                     <Link onClick={handleClickLink} to='/blog' className='p-4 hover:underline'>Blog</Link>
                     <Link onClick={handleClickLink} to='/contact' className='p-4 hover:underline'>Contact</Link>
@@ -36,7 +36,7 @@ export default function Header() {
                 </div>
 
                 <div className='hidden md:block'>
-                    <Link to='/home' className='p-4 hover:underline'>Home</Link>
+                    <Link to='/' className='p-4 hover:underline'>Home</Link>
                     <Link to='/projects' className='p-4 hover:underline'>Projects</Link>
                     <Link to='/blog' className='p-4 hover:underline'>Blog</Link>
                     <Link onClick={handleClickLink} to='/contact' className='p-4 hover:underline'>Contact</Link>
