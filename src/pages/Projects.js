@@ -31,7 +31,7 @@ function Projects() {
             max-md:grid-cols-1">
                 {projects.map(function (object, i) {
                     return (
-                        <div className="project-icon bg-slate-100 dark:bg-slate-700 w-80 h-96 rounded-xl overflow-hidden shadow-2xl bg-opacity-50" style={{ animationDelay: `0.${i}s` }}>
+                        <div key={i} className="project-icon" style={{ animationDelay: `${i*3/10}s` }}>
                             <ProjectIcon data={object} key={i} />
                         </div>
                     )

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faItchIo, faSteam } from "@fortawesome/free-brands-svg-icons";
+import SocialMediaIcon from "../components/SocialMediaIcon";
 
 function Contact() {
   return (
@@ -21,20 +22,24 @@ function Contact() {
           </div>
 
           {/* Add animation delay for each link */}
-          <a
-            href="https://www.linkedin.com/in/clemente-sepulveda/"
-            className="socials-link bg-linkedin"
-            style={{ animationDelay: '0.2s' }}>
-            <i className="fa fa-linkedin text-white"></i>
-          </a>
+          <SocialMediaIcon bgColor={'#0077B5'} animDelay={0.2}>
+            <a href="https://www.linkedin.com/in/clemente-sepulveda/">
+              <i className="fa fa-linkedin"></i>
+            </a>
+          </SocialMediaIcon>
 
           {/* Add animation delay for each link */}
-          <a
+          <SocialMediaIcon bgColor={'#181717'} animDelay={0.3}>
+            <a href="https://github.com/clementesepulveda">
+            <i className="fa fa-github text-7xl"></i>
+            </a>
+          </SocialMediaIcon>
+          {/* <a
             href="https://github.com/clementesepulveda"
             className="socials-link bg-zinc-900 text-white dark:text-black dark:bg-zinc-100"
             style={{ animationDelay: '0.3s' }}>
             <i className="fa fa-github text-7xl"></i>
-          </a>
+          </a> */}
 
           {/* Add animation delay for each link */}
           <a
@@ -57,7 +62,7 @@ function Contact() {
             href="https://steamcommunity.com/id/clegowi/"
             className="socials-link bg-zinc-900 text-white dark:text-black dark:bg-zinc-200"
             style={{ animationDelay: '0.6s' }}
-            >
+          >
             <FontAwesomeIcon icon={faSteam} />
           </a>
 
@@ -89,19 +94,9 @@ function Contact() {
           }
         }
 
-        /* LinkedIn */
-        .bg-linkedin {
-          background-color: #0077B5;
-        }
-
         /* Itch.io */
         .bg-itchio {
           background-color: #FA5C5C;
-        }
-
-        /* GitHub */
-        .bg-github {
-          background-color: #181717;
         }
 
         /* Instagram */
