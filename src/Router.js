@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/notFound";
-// import Admin from "./pages/Admin";
 import Boids from "./pages/boids/Boids";
 import Abstract from "./pages/Abstract";
 import Contact from "./pages/Contact";
@@ -19,6 +18,7 @@ import AdminProjects from "./pages/admin/AdminProjects";
 import Admin from "./pages/admin/Admin";
 import { AdminProtected } from "./hooks/protected";
 import OrganizeProjects from "./pages/admin/OrganizeProjects";
+import CreateBlog from "./pages/blog/CreateBlog";
 
 function Router() {
 
@@ -62,7 +62,11 @@ function Router() {
                                 <OrganizeProjects />
                             </AdminProtected>
                         }></Route>
-                        {/* add a blog */}
+                        <Route path='/admin/blog/create' element={
+                            <AdminProtected>
+                                <CreateBlog />
+                            </AdminProtected>
+                        }></Route>
                         {/* update a blog */}
                         {/* delete a blog */}
 
