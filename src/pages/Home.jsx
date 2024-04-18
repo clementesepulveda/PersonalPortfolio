@@ -7,10 +7,10 @@ import ImAAnimation from "../components/Home/ImAAnimation";
 
 function Home() {
   return (
-    <div className="py-4 px-4 sm:px-8 font-sans">
+    <div className="py-4 px-2 sm:px-8 font-sans">
       <Analytics />
 
-      <div className="min-h-3.5">
+      <div className="">
         <Introduction />
         <ImAAnimation />
         <div className="h-8" />
