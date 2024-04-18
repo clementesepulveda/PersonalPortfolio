@@ -3,7 +3,7 @@ import React from 'react'
 export default function AboutMe() {
     return (
         <>
-            <div className='about-me-container m-w-full text-justify p-2'>
+            <div className='about-me-container m-w-full text-justify p-2 rounded'>
                 <h2 className=''>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
