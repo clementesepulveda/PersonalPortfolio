@@ -13,6 +13,7 @@ function Home() {
       <div className="min-h-3.5">
         <Introduction />
         <ImAAnimation />
+        <div className="h-8" />
         <AboutMe />
         <div className="h-48" />
       </div>

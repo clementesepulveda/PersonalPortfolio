@@ -39,7 +39,7 @@ export default function ImAAnimation() {
 
     return (
         <>
-            <div className="flex py-4 h-48">
+            <div className="flex py-4">
                 <h2 className="text-xl sm:text-2xl md:text-5xl text-ellipsis">I'm a&#160;</h2>
                 <div className="">
                     {iCallMyself.map((title, i) => (
