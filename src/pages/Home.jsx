@@ -15,7 +15,7 @@ function Home() {
         <ImAAnimation />
         <div className="h-8" />
         <AboutMe />
-        <div className="h-48" />
+        <div className="h-28" />
       </div>
       <FamiliarTech />
       <div className="h-24" />

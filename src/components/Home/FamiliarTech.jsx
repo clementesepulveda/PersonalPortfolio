@@ -1,42 +1,41 @@
 import React from 'react'
+import FamiliarTechList from '../FamiliarTechList'
 
 export default function FamiliarTech() {
+
+    const frontendTech = [
+        'react', 'svelte', 'vue',
+        'html', 'tailwind'
+    ]
+
+    const backendTech = [
+        'fast api', 'koa', 'aws',
+        'firebase', 'node'
+    ]
+
+    const programmingLanguages = [
+        'python', 'javascript', 'C sharp', 'C',
+    ]
+
     return (
         <div className='text-center'>
             <h1 className='text-4xl font-bold'>Technology I'm familiar with</h1>
-            <h3 >Front End</h3>
 
+            <h3 className='pt-8 pb-4'>Front End</h3>
+            <FamiliarTechList items={frontendTech}/>
+
+            <h3 className='pt-16 pb-4'>Back End</h3>
+            <FamiliarTechList items={backendTech}/>
+
+            <h3 className='pt-16 pb-4'>Programming Languages</h3>
+            <FamiliarTechList items={programmingLanguages}/>
+            
+            <h3 className='pt-16 pb-4'>Other</h3>
             <ul>
-                <li>React</li>
-                <li>Svelte</li>
-                <li>Vue</li>
-                <li>Html</li>
-            </ul>
-
-            <h3>Back End</h3>
-
-            <ul>
-                <li>Koa</li>
-                <li>Express.js</li>
-                <li>FastAPI</li>
-            </ul>
-
-            <h3>Programming Languages</h3>
-
-            <ul>
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>C#</li>
-                <li>C</li>
-                <li>Bash</li>
-            </ul>
-
-            <h3>Other</h3>
-
-            <ul>
-                <li>a</li>
-                <li>b</li>
-                <li>c</li>
+                <li>Echarts</li>
+                <li>Microsoft API</li>
+                <li>Unity</li>
+                <li>GitHub</li>
             </ul>
 
             <style>{`
