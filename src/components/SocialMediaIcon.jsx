@@ -1,12 +1,10 @@
 import React from 'react'
+import FadeInAnimation from './FadeInAnimation'
 
 export default function SocialMediaIcon({ animDelay, children }) {
   return (
     <>
-      <div className='init-animation'
-        style={{ animationDelay: animDelay }}
-      >
-
+      <FadeInAnimation animDelay={animDelay}>
         <div className='
       bg-green-500
       social-media-container flex
@@ -19,14 +17,9 @@ export default function SocialMediaIcon({ animDelay, children }) {
           </div>
 
         </div>
-      </div>
+      </FadeInAnimation >
 
       <style>{`
-        .init-animation {
-          opacity: 0; /* Initially hide */
-          animation: fadeInFromLeft 1s ease forwards; /* Apply animation */
-        }
-
         .social-media-container:hover {
           transform: scale(1.05);
         }
@@ -35,17 +28,6 @@ export default function SocialMediaIcon({ animDelay, children }) {
           flex-grow: 1;
           align-content: center;
           box-shadow: 10px 10px 25px 1px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes fadeInFromLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
         }
       `}</style>
     </>
