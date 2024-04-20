@@ -2,9 +2,11 @@ import { get, getDatabase, ref } from "firebase/database";
 import ProjectIcon from "../components/ProjectIcon";
 import app from "../firebase";
 import { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function Projects() {
     let [projects, setProjects] = useState([])
+    let [isLoading, setIsLoading] = useState(true)
 
     const fetchData = async () => {
         const db = getDatabase(app)
@@ -16,6 +18,7 @@ function Projects() {
             projectsData = projectsData.sort((a, b) => a.order > b.order ? 1 : -1);
             setProjects(projectsData);
         }
+        setIsLoading(false);
     }
 
     useEffect(() => {
@@ -24,20 +27,22 @@ function Projects() {
 
     return (
         <>
-            <div className="grid place-items-center gap-10 p-4 grid-auto-columns-1/2 py-10
-            grid-cols-4  
-            max-xl:grid-cols-3
-            max-lg:grid-cols-2
-            max-md:grid-cols-1">
-                {projects.map(function (object, i) {
-                    return (
-                        <div key={i} className="project-icon" style={{ animationDelay: `${i*3/10}s` }}>
-                            <ProjectIcon data={object} key={i} />
-                        </div>
-                    )
+            {isLoading ?
+                <div className="bg-green- flex justify-center p-16">
+                    <LoadingSpinner />
+                </div>
+                :
+                <div className="flex flex-wrap justify-center gap-10 p-4 py-10">
+                    {projects.map(function (object, i) {
+                        return (
+                            <div key={i} className="project-icon" style={{ animationDelay: `${i * 3 / 10}s` }}>
+                                <ProjectIcon data={object} key={i} />
+                            </div>
+                        )
 
-                })}
-            </div>
+                    })}
+                </div>
+            }
 
             <style>{`
         
