@@ -1,0 +1,94 @@
+.blog-content {
+
+    /* Reset default margin and padding */
+    body,
+    h1,
+    h2,
+    p,
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Style headings */
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Style paragraphs */
+    p {
+        margin-bottom: 1rem;
+    }
+
+    /* Style unordered lists */
+    ul {
+        margin-bottom: 1rem;
+    }
+
+    /* Style list items */
+    li {
+        margin-left: 1.5rem;
+        list-style: square;
+        /* or disc, circle, etc. */
+    }
+
+    /* Style links */
+    a {
+        color: #007bff;
+        /* blue color */
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Style images */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    /* Style tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+    }
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 0.5rem;
+    }
+
+    /* Style code blocks */
+    pre {
+        background-color: #f4f4f4;
+        padding: 1rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+    }
+
+    code {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1rem;
+        color: #333;
+    }
+}

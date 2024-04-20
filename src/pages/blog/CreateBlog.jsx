@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { BsFillArrowLeftCircleFill } from "react-icons/bs"
 import { Link, useNavigate } from "react-router-dom";
@@ -6,9 +6,9 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
-import { Timestamp, addDoc, collection } from 'firebase/firestore';
+import { Timestamp } from 'firebase/firestore';
 import toast from 'react-hot-toast';
-import { getDownloadURL, getStorage, ref as refStorage, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref as refStorage, uploadBytes } from 'firebase/storage';
 import app, { storage } from '../../firebase';
 import { getDatabase, push, ref, set } from 'firebase/database'
 
@@ -30,7 +30,7 @@ function CreateBlog() {
     //* Add Post Function 
     const addPost = async () => {
         console.log('5')
-        if (blogs.title === "" || blogs.category === "" || blogs.content === "" || blogs.thumbnail === "") {
+        if (blogs.title === "" || blogs.category === "" || blogs.content === "" || blogs.image === "") {
             console.log('4')
             toast.error('Please Fill All Fields');
         }
@@ -41,25 +41,16 @@ function CreateBlog() {
     //* Upload Image Function 
     const uploadImage = () => {
         if (!thumbnail) return;
-        // const storage = getStorage(app);
-
-        console.log('1', storage, thumbnail)
-
         const imageRef = refStorage(storage, `blogimage/${thumbnail.name}`);
 
-
-        console.log('1', imageRef, thumbnail)
         uploadBytes(imageRef, thumbnail).then((snapshot) => {
-            console.log('2')
             getDownloadURL(snapshot.ref).then((url) => {
-                console.log('3')
-
                 const db = getDatabase(app);
                 const newDocRef = push(ref(db, 'blogs'));
 
                 set(newDocRef, {
-                    blogs,
-                    thumbnail: url,
+                    ...blogs,
+                    image: url,
                     time: Timestamp.now(),
                     date: new Date().toLocaleString(
                         "en-US",
@@ -71,40 +62,12 @@ function CreateBlog() {
                     )
                 }).then(() => {
                     alert('Created successfully.')
-                    toast.success('Post Added Successfully');
+                    navigate('/blog')
                 }).catch((error) => {
                     alert(`Error: ${error.message}`)
                 })
-
-                try {
-                    // addDoc(productRef, {
-                    //     blogs,
-                    //     thumbnail: url,
-                    //     time: Timestamp.now(),
-                    //     date: new Date().toLocaleString(
-                    //         "en-US",
-                    //         {
-                    //             month: "short",
-                    //             day: "2-digit",
-                    //             year: "numeric",
-                    //         }
-                    //     )
-                    // })
-                    // navigate('/dashboard')
-                    // toast.success('Post Added Successfully');
-
-                } catch (error) {
-                    toast.error(error)
-                }
             });
         });
-    }
-
-    const [text, settext] = useState('');
-
-    //* Create markup function 
-    function createMarkup(c) {
-        return { __html: c };
     }
 
     return (
@@ -204,11 +167,8 @@ function CreateBlog() {
                     apiKey={process.env.REACT_APP_TINY_MCE_API_KEY}
                     onEditorChange={(newValue, editor) => {
                         setBlogs({ ...blogs, content: newValue });
-                        settext(editor.getContent({ format: 'text' }));
                     }}
-                    onInit={(evt, editor) => {
-                        settext(editor.getContent({ format: 'text' }));
-                    }}
+                    onInit={(evt, editor) => {}}
                     init={{
                         plugins: 'a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents tinydrive tinymcespellchecker typography visualblocks visualchars wordcount'
                     }}

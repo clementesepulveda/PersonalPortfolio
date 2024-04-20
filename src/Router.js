@@ -5,7 +5,7 @@ import {
 import Layout from "./Layout";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Blog from "./pages/Blog";
+import Blog from "./pages/blog/Blog";
 import NotFound from "./pages/notFound";
 import Boids from "./pages/boids/Boids";
 import Abstract from "./pages/Abstract";
@@ -19,6 +19,7 @@ import Admin from "./pages/admin/Admin";
 import { AdminProtected } from "./hooks/protected";
 import OrganizeProjects from "./pages/admin/OrganizeProjects";
 import CreateBlog from "./pages/blog/CreateBlog";
+import BlogContent from "./pages/blog/BlogContent";
 
 function Router() {
 
@@ -30,6 +31,7 @@ function Router() {
                         <Route path='/' Component={Home}></Route>
                         <Route path='/projects' Component={Projects}></Route>
                         <Route path='/blog' Component={Blog}></Route>
+                        <Route path='/blog/:id' Component={BlogContent}></Route>
                         <Route path='/contact' Component={Contact}></Route>
                         <Route path='/abstract' Component={Abstract}></Route>
                         <Route path='/boids' Component={Boids}></Route>
