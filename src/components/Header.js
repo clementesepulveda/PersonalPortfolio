@@ -21,7 +21,7 @@ export default function Header() {
             <div className='h-16'></div>
 
             {hamburgerOpen ?
-                <div className='bg-white bg-opacity-20 dark:bg-slate-900 dark:bg-opacity-50 z-50 grid fixed w-screen backdrop-filter backdrop-blur-sm'>
+                <div className='bg-white bg-opacity-60 dark:bg-slate-900 dark:bg-opacity-50 z-50 grid fixed w-screen backdrop-filter backdrop-blur-sm'>
                     <Link onClick={handleClickLink} to='/' className='p-4 hover:underline'>Home</Link>
                     <Link onClick={handleClickLink} to='/projects' className='p-4 hover:underline'>Projects</Link>
                     <Link onClick={handleClickLink} to='/blog' className='p-4 hover:underline'>Blog</Link>
@@ -30,7 +30,7 @@ export default function Header() {
                         <Link onClick={handleClickLink} to='/admin' className='p-4 hover:underline'>Admin</Link> : null}
                 </div> : <></>}
 
-            <header className="fixed z-20 h-16 w-full dark:bg-slate-950 shadow-xl flex items-center justify-between fixed inset-0 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur-sm">
+            <header className="fixed z-20 h-16 w-full bg-white dark:bg-slate-950 shadow-xl flex items-center justify-between fixed inset-0 bg-opacity-80 bg-opacity-80 backdrop-filter backdrop-blur-sm">
                 <div className='p-6 md:hidden cursor-pointer' onClick={toggleHamburger}>
                     <Hamburger />
                 </div>
