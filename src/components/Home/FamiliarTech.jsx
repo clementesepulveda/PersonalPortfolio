@@ -17,6 +17,10 @@ export default function FamiliarTech() {
         'python', 'javascript', 'C sharp', 'C',
     ]
 
+    const otherTech = [
+        'unity', 'echarts', 'microsoft graph api', 
+    ]
+
     return (
         <div className='text-center'>
             <h1 className='text-4xl font-bold'>Technology I'm familiar with</h1>
@@ -29,14 +33,9 @@ export default function FamiliarTech() {
 
             <h3 className='pt-16 pb-4'>Programming Languages</h3>
             <FamiliarTechList items={programmingLanguages}/>
-            
+
             <h3 className='pt-16 pb-4'>Other</h3>
-            <ul>
-                <li>Echarts</li>
-                <li>Microsoft API</li>
-                <li>Unity</li>
-                <li>GitHub</li>
-            </ul>
+            <FamiliarTechList items={otherTech}/>
 
             <style>{`
         h3 {
