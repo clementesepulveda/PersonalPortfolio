@@ -21,11 +21,12 @@ export default function Header() {
             <div className='h-16'></div>
 
             {hamburgerOpen ?
-                <div className='bg-white bg-opacity-60 dark:bg-slate-900 dark:bg-opacity-50 z-50 grid fixed w-screen backdrop-filter backdrop-blur-sm'>
+                <div className='bg-white bg-opacity-60 dark:bg-slate-900 dark:bg-opacity-70 z-50 grid fixed w-screen backdrop-filter backdrop-blur-sm'>
                     <Link onClick={handleClickLink} to='/' className='p-4 hover:underline'>Home</Link>
                     <Link onClick={handleClickLink} to='/projects' className='p-4 hover:underline'>Projects</Link>
-                    <Link onClick={handleClickLink} to='/blog' className='p-4 hover:underline'>Blog</Link>
+                    {/* <Link onClick={handleClickLink} to='/blog' className='p-4 hover:underline'>Blog</Link> */}
                     <Link onClick={handleClickLink} to='/contact' className='p-4 hover:underline'>Contact</Link>
+                    <a href='/resume.pdf' target="_blank" className='p-4 hover:underline'>Resume</a>
                     {currentUser ?
                         <Link onClick={handleClickLink} to='/admin' className='p-4 hover:underline'>Admin</Link> : null}
                 </div> : <></>}
@@ -38,8 +39,9 @@ export default function Header() {
                 <div className='hidden md:block'>
                     <Link to='/' className='p-4 hover:underline'>Home</Link>
                     <Link to='/projects' className='p-4 hover:underline'>Projects</Link>
-                    <Link to='/blog' className='p-4 hover:underline'>Blog</Link>
+                    {/* <Link to='/blog' className='p-4 hover:underline'>Blog</Link> */}
                     <Link onClick={handleClickLink} to='/contact' className='p-4 hover:underline'>Contact</Link>
+                    <a href='/resume.pdf' target="_blank" className='p-4 hover:underline'>Resume</a>
                     {currentUser ?
                         <Link to='/admin' className='p-4 hover:underline'>Admin</Link> : null}
                 </div>

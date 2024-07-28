@@ -9,14 +9,17 @@ function Projects() {
     let [isLoading, setIsLoading] = useState(true)
 
     const fetchData = async () => {
-        const db = getDatabase(app)
-        const dbRef = ref(db, 'projects');
-        const snapshot = await get(dbRef);
+        try {
+            const db = getDatabase(app)
+            const dbRef = ref(db, 'projects');
+            const snapshot = await get(dbRef);
 
-        if (snapshot.exists()) {
-            let projectsData = Object.values(snapshot.val());
-            projectsData = projectsData.sort((a, b) => a.order > b.order ? 1 : -1);
-            setProjects(projectsData);
+            if (snapshot.exists()) {
+                let projectsData = Object.values(snapshot.val());
+                projectsData = projectsData.sort((a, b) => a.order > b.order ? 1 : -1);
+                setProjects(projectsData);
+            }
+        } catch (error) {
         }
         setIsLoading(false);
     }

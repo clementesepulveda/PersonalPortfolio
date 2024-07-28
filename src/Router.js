@@ -20,6 +20,7 @@ import { AdminProtected } from "./hooks/protected";
 import OrganizeProjects from "./pages/admin/OrganizeProjects";
 import CreateBlog from "./pages/blog/CreateBlog";
 import BlogContent from "./pages/blog/BlogContent";
+import resume from "./pages/blog/CreateBlog";
 
 function Router() {
 
